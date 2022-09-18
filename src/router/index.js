@@ -15,7 +15,7 @@ const routes = [
     component: () =>
       import(/*webpackChunkName:"home-chunk"*/ '../pages/Home.vue'),
     // 当某个路由有子级路由时，父级路由需要一个默认的路由，因此父级路由不能定义name属性
-    // name: 'home',
+    name: 'home',
     meta: {
       name: 'why',
       age: 18,
@@ -63,5 +63,16 @@ const router = createRouter({
   //   history: createWebHashHistory(),
   history: createWebHistory(),
 });
-
+//动态绑定路由
+const category = {
+  path: '/category',
+  component: () => import('../pages/Category.vue'),
+};
+// 添加顶级路由对象
+router.addRoute(category);
+// 添加二级路由对象
+router.addRoute('home', {
+  path: 'moment',
+  component: () => import('../pages/HomeMoment.vue'),
+});
 export default router;

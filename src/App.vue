@@ -18,6 +18,7 @@
     </router-link>
     <router-link to="/about">关于</router-link>
     <router-link to="/user/why/id/10010">用户</router-link>
+    <router-link to="/category">分类</router-link>
     <!-- <router-link to="/about" replace>关于</router-link> -->
 
     <button @click="jumpToAbout">点击关于按钮</button>
