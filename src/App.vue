@@ -26,11 +26,11 @@
 
     <!-- 对象结构写法v-slot='{Component}' -->
     <router-view v-slot="props">
-      <transition name="why">
-        <keep-alive>
-          <component :is="props.Component"></component>
-        </keep-alive>
-      </transition>
+      <!-- <transition name="why"> -->
+      <keep-alive>
+        <component :is="props.Component"></component>
+      </keep-alive>
+      <!-- </transition> -->
     </router-view>
   </div>
 </template>

@@ -43,6 +43,11 @@ const routes = [
     name: 'about',
   },
   {
+    path: '/login',
+    component: () => import('../pages/Login.vue'),
+    name: 'login',
+  },
+  {
     //动态绑定路由
     path: '/user/:username/id/:id',
     component: () => import('../pages/User.vue'),
@@ -74,5 +79,27 @@ router.addRoute(category);
 router.addRoute('home', {
   path: 'moment',
   component: () => import('../pages/HomeMoment.vue'),
+});
+
+// 导航守卫
+/**
+ * return返回值问题：
+ * 1.false：不进行导航
+ * 2.undefined 或者不写，进行默认导航
+ * 3.字符串：“路径” 就跳转到对应的路径中
+ * 4.对象： 类似于 router.push({path:'/login',query:...})
+ */
+let counter = 0;
+router.beforeEach((to, from) => {
+  //   console.log(`进行了${++counter}路由跳转`);
+  //   if (to.path.indexOf('/home') !== -1) {
+  //     return '/login';
+  //   }
+  if (to.path != '/login') {
+    const token = window.localStorage.getItem('token');
+    if (!token) {
+      return '/login';
+    }
+  }
 });
 export default router;
